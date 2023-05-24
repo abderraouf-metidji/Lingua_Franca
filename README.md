@@ -31,7 +31,6 @@ To use and run this project, you simply need to download all the files from the 
 
 Install the `requests` library:
    
-      ```plaintext
       pip install requests
 
 Install the langdetect library:
