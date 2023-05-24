@@ -29,14 +29,18 @@ To use and run this project, you simply need to download all the files from the 
 
 1. Install the required packages/libraries by running the following commands in your terminal:
 
-   ```plaintext
-   pip install requests
+Install the `requests` library:
    
-     ```plaintext
-   pip install langdetect
-   
-     ```plaintext
-   pip install flask
+      ```plaintext
+      pip install requests
+
+Install the langdetect library:
+
+      pip install langdetect
+
+Install the flask library:
+
+      pip install flask
 
 2. After installing the packages, run the Python file.
 
