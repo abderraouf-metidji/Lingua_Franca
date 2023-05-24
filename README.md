@@ -33,11 +33,11 @@ Install the `requests` library:
    
       pip install requests
 
-Install the langdetect library:
+Install the `langdetect` library:
 
       pip install langdetect
 
-Install the flask library:
+Install the `flask` library:
 
       pip install flask
 
