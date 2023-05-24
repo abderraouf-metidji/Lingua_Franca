@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traducteur</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Form submission
+            $("#translation-form").submit(function(event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: "/translate",
+                    type: "POST",
+                    data: formData,
+                    success: function(response) {
+                        $("#translation").val(response.translation);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error:", error);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Traducteur</h1>
+        <form id="translation-form" action="/translate" method="POST">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="text" class="form-label">Texte :</label>
+                        <textarea id="text" name="text" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="source_lang" class="form-label">Langue d'origine :</label>
+                        <select id="source_lang" name="source_lang" class="form-select">
+                            <option value="auto">Détection automatique</option>
+                            <option value="fr">Français</option>
+                            <option value="en">Anglais</option>
+                            <option value="ar">Arabe</option>
+                            <option value="es">Espagnol</option>
+                            <option value="de">Allemand</option>
+                            <option value="it">Italien</option>
+                            <option value="el">Grec</option>
+                            <option value="nl">Néerlandais</option>
+                            <option value="pt">Portugais</option>
+                            <option value="ru">Russe</option>
+                            <option value="ja">Japonais</option>
+                            <option value="ko">Coréen</option>
+                            <option value="tr">Turc</option>
+                            <option value="vi">Vietnamien</option>
+                            <option value="pl">Polonais</option>
+                            <option value="uk">Ukrainien</option>
+                            <option value="id">Indonésien</option>
+                            <option value="ro">Roumain</option>
+                            <option value="yi">Yiddish</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="translation" class="form-label">Traduction :</label>
+                        <textarea id="translation" name="translation" class="form-control" rows="4" readonly></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="target_lang" class="form-label">Langue de traduction :</label>
+                        <select id="target_lang" name="target_lang" class="form-select">
+                            <option value="fr">Français</option>
+                            <option value="en">Anglais</option>
+                            <option value="ar">Arabe</option>
+                            <option value="es">Espagnol</option>
+                            <option value="de">Allemand</option>
+                            <option value="it">Italien</option>
+                            <option value="el">Grec</option>
+                            <option value="nl">Néerlandais</option>
+                            <option value="pt">Portugais</option>
+                            <option value="ru">Russe</option>
+                            <option value="ja">Japonais</option>
+                            <option value="ko">Coréen</option>
+                            <option value="tr">Turc</option>
+                            <option value="vi">Vietnamien</option>
+                            <option value="pl">Polonais</option>
+                            <option value="uk">Ukrainien</option>
+                            <option value="id">Indonésien</option>
+                            <option value="ro">Roumain</option>
+                            <option value="yi">Yiddish</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Traduire</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
